@@ -4,7 +4,7 @@ import { v2 as cloudinary } from 'cloudinary';
 
 export const maxDuration = 300;
 
-// Get environment variables safely
+// Get and validate Cloudinary environment variables
 function getCloudinaryConfig() {
   const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
   const apiKey = process.env.CLOUDINARY_API_KEY;
@@ -38,14 +38,15 @@ export async function POST(req: NextRequest) {
     // Get and validate Cloudinary config
     const { cloudName, apiKey, apiSecret } = getCloudinaryConfig();
 
-    // Configure Cloudinary with environment variables
+    // Configure Cloudinary with environment variables - must be done for each request
     cloudinary.config({
       cloud_name: cloudName,
       api_key: apiKey,
       api_secret: apiSecret,
+      secure: true,
     });
 
-    console.log('Cloudinary configured successfully', { cloudName });
+    console.log('Cloudinary configured successfully for request', { cloudName });
 
     const contentType = req.headers.get('content-type') || '';
     let file: Buffer | null = null;
@@ -53,28 +54,25 @@ export async function POST(req: NextRequest) {
 
     // Support FormData from client
     if (contentType.includes('multipart/form-data')) {
-      console.log('Processing FormData request...');
+      console.log('Processing FormData request');
       const formData = await req.formData();
       const fileData = formData.get('file');
 
       if (fileData && typeof fileData === 'object' && 'arrayBuffer' in fileData) {
         file = Buffer.from(await (fileData as any).arrayBuffer());
         contentId = `thumbnail-${Date.now()}`;
-        console.log('File processed successfully:', { fileSize: file.length, contentId });
+        console.log('File processed from FormData:', { fileSize: file.length, contentId });
       } else {
         console.error('File not found in FormData');
         return NextResponse.json(
           { error: 'File not found in FormData' },
-          {
-            status: 400,
-            headers: { 'Access-Control-Allow-Origin': '*' },
-          }
+          { status: 400, headers: { 'Access-Control-Allow-Origin': '*' } }
         );
       }
     }
     // Support JSON with base64
     else if (contentType.includes('application/json')) {
-      console.log('Processing JSON request...');
+      console.log('Processing JSON request');
       const body = await req.json();
       const base64String = body.file;
       const contentIdParam = body.contentId;
@@ -83,35 +81,26 @@ export async function POST(req: NextRequest) {
         console.error('Base64 file data not provided');
         return NextResponse.json(
           { error: 'File data not provided' },
-          {
-            status: 400,
-            headers: { 'Access-Control-Allow-Origin': '*' },
-          }
+          { status: 400, headers: { 'Access-Control-Allow-Origin': '*' } }
         );
       }
 
       try {
         file = Buffer.from(base64String, 'base64');
         contentId = contentIdParam || `thumbnail-${Date.now()}`;
-        console.log('Base64 decoded successfully:', { fileSize: file.length, contentId });
+        console.log('Base64 file processed:', { fileSize: file.length, contentId });
       } catch (bufferError) {
         console.error('Buffer conversion error:', bufferError);
         return NextResponse.json(
           { error: 'Base64 decoding failed' },
-          {
-            status: 400,
-            headers: { 'Access-Control-Allow-Origin': '*' },
-          }
+          { status: 400, headers: { 'Access-Control-Allow-Origin': '*' } }
         );
       }
     } else {
       console.error('Unsupported Content-Type:', contentType);
       return NextResponse.json(
         { error: 'Use JSON or FormData format' },
-        {
-          status: 400,
-          headers: { 'Access-Control-Allow-Origin': '*' },
-        }
+        { status: 400, headers: { 'Access-Control-Allow-Origin': '*' } }
       );
     }
 
@@ -120,10 +109,7 @@ export async function POST(req: NextRequest) {
       console.error('File is empty');
       return NextResponse.json(
         { error: 'File is empty' },
-        {
-          status: 400,
-          headers: { 'Access-Control-Allow-Origin': '*' },
-        }
+        { status: 400, headers: { 'Access-Control-Allow-Origin': '*' } }
       );
     }
 
@@ -133,10 +119,7 @@ export async function POST(req: NextRequest) {
       console.error('File size exceeded:', file.length);
       return NextResponse.json(
         { error: 'File size must be under 10MB' },
-        {
-          status: 413,
-          headers: { 'Access-Control-Allow-Origin': '*' },
-        }
+        { status: 413, headers: { 'Access-Control-Allow-Origin': '*' } }
       );
     }
 
@@ -168,28 +151,36 @@ export async function POST(req: NextRequest) {
     });
 
     const upload = result as any;
+    console.log('Upload response:', { secure_url: upload?.secure_url, public_id: upload?.public_id });
 
     return NextResponse.json(
       {
         success: true,
         url: upload.secure_url,
       },
-      {
-        headers: { 'Access-Control-Allow-Origin': '*' },
-      }
+      { headers: { 'Access-Control-Allow-Origin': '*' } }
     );
   } catch (error: any) {
     console.error('Background upload API error:', {
       message: error?.message,
       name: error?.name,
+      code: error?.code,
       stack: error?.stack,
     });
+
+    // Determine appropriate status code
+    let statusCode = 500;
+    if (error?.http_code) {
+      statusCode = error.http_code;
+    }
+
     return NextResponse.json(
       {
         error: `Background upload failed: ${error?.message || 'Unknown error'}`,
+        details: process.env.NODE_ENV === 'development' ? error?.stack : undefined,
       },
       {
-        status: 500,
+        status: statusCode,
         headers: { 'Access-Control-Allow-Origin': '*' },
       }
     );
