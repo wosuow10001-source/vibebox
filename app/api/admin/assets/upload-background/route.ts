@@ -4,6 +4,24 @@ import { v2 as cloudinary } from 'cloudinary';
 
 export const maxDuration = 300;
 
+// Get environment variables safely
+function getCloudinaryConfig() {
+  const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
+  const apiKey = process.env.CLOUDINARY_API_KEY;
+  const apiSecret = process.env.CLOUDINARY_API_SECRET;
+
+  if (!cloudName || !apiKey || !apiSecret) {
+    console.error('Missing Cloudinary environment variables:', {
+      cloudName: cloudName ? 'present' : 'MISSING',
+      apiKey: apiKey ? 'present' : 'MISSING',
+      apiSecret: apiSecret ? 'present' : 'MISSING',
+    });
+    throw new Error('Cloudinary environment variables not configured');
+  }
+
+  return { cloudName, apiKey, apiSecret };
+}
+
 export async function OPTIONS(req: NextRequest) {
   return new NextResponse(null, {
     status: 200,
@@ -17,12 +35,17 @@ export async function OPTIONS(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   try {
+    // Get and validate Cloudinary config
+    const { cloudName, apiKey, apiSecret } = getCloudinaryConfig();
+
     // Configure Cloudinary with environment variables
     cloudinary.config({
-      cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-      api_key: process.env.CLOUDINARY_API_KEY,
-      api_secret: process.env.CLOUDINARY_API_SECRET,
+      cloud_name: cloudName,
+      api_key: apiKey,
+      api_secret: apiSecret,
     });
+
+    console.log('Cloudinary configured successfully', { cloudName });
 
     const contentType = req.headers.get('content-type') || '';
     let file: Buffer | null = null;
@@ -121,7 +144,7 @@ export async function POST(req: NextRequest) {
     console.log('Starting Cloudinary upload:', {
       contentId,
       fileSize: file.length,
-      cloudName: process.env.CLOUDINARY_CLOUD_NAME,
+      cloudName,
     });
 
     const result = await new Promise((resolve, reject) => {
@@ -136,7 +159,7 @@ export async function POST(req: NextRequest) {
             console.error('Cloudinary upload failed:', error);
             reject(error);
           } else {
-            console.log('Cloudinary upload successful:', result);
+            console.log('Cloudinary upload successful:', result?.public_id);
             resolve(result);
           }
         }
@@ -160,9 +183,6 @@ export async function POST(req: NextRequest) {
       message: error?.message,
       name: error?.name,
       stack: error?.stack,
-      cloudName: process.env.CLOUDINARY_CLOUD_NAME,
-      apiKey: process.env.CLOUDINARY_API_KEY ? '***' : 'MISSING',
-      apiSecret: process.env.CLOUDINARY_API_SECRET ? '***' : 'MISSING',
     });
     return NextResponse.json(
       {
