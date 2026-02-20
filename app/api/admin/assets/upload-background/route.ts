@@ -2,12 +2,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { v2 as cloudinary } from 'cloudinary';
 
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});
-
 export const maxDuration = 300;
 
 export async function OPTIONS(req: NextRequest) {
@@ -23,6 +17,13 @@ export async function OPTIONS(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   try {
+    // Configure Cloudinary with environment variables
+    cloudinary.config({
+      cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+      api_key: process.env.CLOUDINARY_API_KEY,
+      api_secret: process.env.CLOUDINARY_API_SECRET,
+    });
+
     const contentType = req.headers.get('content-type') || '';
     let file: Buffer | null = null;
     let contentId = '';
@@ -120,7 +121,9 @@ export async function POST(req: NextRequest) {
     console.log('Starting Cloudinary upload:', {
       contentId,
       fileSize: file.length,
+      cloudName: process.env.CLOUDINARY_CLOUD_NAME,
     });
+
     const result = await new Promise((resolve, reject) => {
       const stream = cloudinary.uploader.upload_stream(
         {
@@ -157,8 +160,10 @@ export async function POST(req: NextRequest) {
       message: error?.message,
       name: error?.name,
       stack: error?.stack,
+      cloudName: process.env.CLOUDINARY_CLOUD_NAME,
+      apiKey: process.env.CLOUDINARY_API_KEY ? '***' : 'MISSING',
+      apiSecret: process.env.CLOUDINARY_API_SECRET ? '***' : 'MISSING',
     });
-
     return NextResponse.json(
       {
         error: `Background upload failed: ${error?.message || 'Unknown error'}`,
