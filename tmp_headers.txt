@@ -1,0 +1,15 @@
+HTTP/1.1 200 OK
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Referrer-Policy: strict-origin-when-cross-origin
+Accept-Ranges: bytes
+Cache-Control: public, max-age=0
+Last-Modified: Wed, 18 Feb 2026 15:11:20 GMT
+ETag: W/"49721-19c714e4592"
+Content-Type: text/html; charset=UTF-8
+Content-Length: 300833
+Vary: Accept-Encoding
+Date: Wed, 18 Feb 2026 16:39:05 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+

@@ -1,0 +1,422 @@
+
+> vibebox-platform@0.1.0 dev
+> next dev
+
+   ??Next.js 15.5.12
+   - Local:        http://localhost:3000
+   - Network:      http://172.22.176.1:3000
+   - Environments: .env.local
+
+ ??Starting...
+ ??Ready in 2.5s
+ ??Compiling /a/[slug] ...
+ ??Compiled / in 4.6s (651 modules)
+C:\Users\zeis1\Downloads\vibebox\.next\server\app\(public)\page.js: Invalid source map. Only conformant source maps can be used to filter stack frames. Cause: TypeError [ERR_INVALID_ARG_TYPE]: The "payload" argument must be of type object. Received null
+C:\Users\zeis1\Downloads\vibebox\.next\server\vendor-chunks\next.js: Invalid source map. Only conformant source maps can be used to filter stack frames. Cause: TypeError [ERR_INVALID_ARG_TYPE]: The "payload" argument must be of type object. Received null
+C:\Users\zeis1\Downloads\vibebox\.next\server\app\(public)\page.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: TypeError [ERR_INVALID_ARG_TYPE]: The "payload" argument must be of type object. Received null
+C:\Users\zeis1\Downloads\vibebox\.next\server\vendor-chunks\next.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: TypeError [ERR_INVALID_ARG_TYPE]: The "payload" argument must be of type object. Received null
+ GET / 200 in 1659ms
+C:\Users\zeis1\Downloads\vibebox\.next\server\app\(public)\a\[slug]\page.js: Invalid source map. Only conformant source maps can be used to filter stack frames. Cause: TypeError [ERR_INVALID_ARG_TYPE]: The "payload" argument must be of type object. Received null
+C:\Users\zeis1\Downloads\vibebox\.next\server\app\(public)\a\[slug]\page.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: TypeError [ERR_INVALID_ARG_TYPE]: The "payload" argument must be of type object. Received null
+ ??Compiling /api/public/slots ...
+ GET /a/sample-content 200 in 6112ms
+ ??Compiled /api/public/slots in 1088ms (646 modules)
+ GET /api/public/slots?placement=HOME_FOOTER&device=desktop&pageType=home 200 in 1435ms
+ GET /api/public/slots?placement=DETAIL_TOP&device=desktop&pageType=html_app 200 in 521ms
+ GET /api/public/slots?placement=DETAIL_MID&device=desktop 200 in 520ms
+ GET /api/public/slots?placement=DETAIL_BOTTOM&device=desktop 200 in 520ms
+ GET /api/public/slots?placement=HOME_TOP&device=desktop&pageType=home 200 in 1436ms
+ GET /a/sample-content 200 in 120ms
+ GET /api/public/slots?placement=DETAIL_TOP&device=desktop&pageType=html_app 200 in 24ms
+ GET /api/public/slots?placement=DETAIL_MID&device=desktop 200 in 35ms
+ GET /api/public/slots?placement=DETAIL_BOTTOM&device=desktop 200 in 34ms
+ ??Compiled in 239ms (250 modules)
+ GET /a/sample-content 200 in 76ms
+ GET /a/sample-content 200 in 42ms
+ ??Compiled in 148ms (250 modules)
+ GET /a/sample-content 200 in 59ms
+ ??Compiled in 277ms (640 modules)
+ GET /a/sample-content 200 in 231ms
+ ??Compiled in 317ms (640 modules)
+C:\Users\zeis1\Downloads\vibebox\.next\server\app\(public)\a\[slug]\page.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: TypeError [ERR_INVALID_ARG_TYPE]: The "payload" argument must be of type object. Received null
+ 殊?ReferenceError: makePublicUrl is not defined
+    at renderContent (C:\Users\zeis1\Downloads\vibebox\.next\server\app\(public)\a\[slug]\page.js:342:34)
+    at AppPage (C:\Users\zeis1\Downloads\vibebox\.next\server\app\(public)\a\[slug]\page.js:419:39) {
+  digest: '1455483385'
+}
+ GET /a/sample-content 200 in 134ms
+ ??Compiled in 265ms (640 modules)
+ ??Fast Refresh had to perform a full reload due to a runtime error.
+ GET /a/sample-content 200 in 133ms
+ ??Compiled /api/public/assets/[id]/download in 200ms (645 modules)
+ GET /api/public/assets/asset-693c90a1-6405-445d-9ad9-3c9b71f1c047/download 200 in 1132ms
+ ??Compiling /api/public/slots ...
+ ??Compiled /api/public/slots in 650ms (410 modules)
+ GET /api/public/slots?placement=DETAIL_MID&device=desktop 200 in 786ms
+ GET /api/public/slots?placement=DETAIL_BOTTOM&device=desktop 200 in 786ms
+ GET /api/public/slots?placement=DETAIL_TOP&device=desktop&pageType=html_app 200 in 787ms
+ GET / 200 in 132ms
+ GET /api/public/slots?placement=HOME_TOP&device=desktop&pageType=home 200 in 228ms
+ GET /api/public/slots?placement=HOME_FOOTER&device=desktop&pageType=home 200 in 277ms
+ GET / 200 in 55ms
+ GET /api/public/slots?placement=HOME_TOP&device=desktop&pageType=home 200 in 210ms
+ GET /api/public/slots?placement=HOME_FOOTER&device=desktop&pageType=home 200 in 304ms
+ GET /a/sample-content 200 in 87ms
+ GET /api/public/slots?placement=DETAIL_TOP&device=desktop&pageType=html_app 200 in 281ms
+ GET /api/public/slots?placement=DETAIL_MID&device=desktop 200 in 334ms
+ GET /api/public/slots?placement=DETAIL_BOTTOM&device=desktop 200 in 334ms
+ ??Compiling /middleware ...
+ ??Compiled /middleware in 536ms (199 modules)
+?뵍 JWT initialized with key: your-super-secret-ke...
+?뵇 Middleware check for: /admin (devMode=true)
+??DEV mode: bypassing auth for /admin
+ ??Compiled /admin in 431ms (654 modules)
+C:\Users\zeis1\Downloads\vibebox\.next\server\app\admin\page.js: Invalid source map. Only conformant source maps can be used to filter stack frames. Cause: TypeError [ERR_INVALID_ARG_TYPE]: The "payload" argument must be of type object. Received null
+C:\Users\zeis1\Downloads\vibebox\.next\server\app\admin\page.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: TypeError [ERR_INVALID_ARG_TYPE]: The "payload" argument must be of type object. Received null
+ GET /admin 200 in 600ms
+?뵇 Middleware check for: /admin/content (devMode=true)
+??DEV mode: bypassing auth for /admin/content
+ ??Compiled /admin/content in 235ms (661 modules)
+C:\Users\zeis1\Downloads\vibebox\.next\server\app\admin\content\page.js: Invalid source map. Only conformant source maps can be used to filter stack frames. Cause: TypeError [ERR_INVALID_ARG_TYPE]: The "payload" argument must be of type object. Received null
+ GET /admin/content 200 in 306ms
+?뵇 Middleware check for: /api/admin/content (devMode=true)
+??DEV mode: bypassing auth for /api/admin/content
+ ??Compiled /api/admin/content in 261ms (672 modules)
+ GET /api/admin/content 200 in 475ms
+?뵇 Middleware check for: /api/admin/content (devMode=true)
+??DEV mode: bypassing auth for /api/admin/content
+ GET /api/admin/content 200 in 16ms
+?뵇 Middleware check for: /api/admin/content/1771462201474 (devMode=true)
+??DEV mode: bypassing auth for /api/admin/content/1771462201474
+ ??Compiled /api/admin/content/[id] in 200ms (674 modules)
+ DELETE /api/admin/content/1771462201474 200 in 712ms
+?뵇 Middleware check for: /admin/content/new (devMode=true)
+??DEV mode: bypassing auth for /admin/content/new
+ ??Compiled /admin/content/new in 283ms (681 modules)
+C:\Users\zeis1\Downloads\vibebox\.next\server\app\admin\content\new\page.js: Invalid source map. Only conformant source maps can be used to filter stack frames. Cause: TypeError [ERR_INVALID_ARG_TYPE]: The "payload" argument must be of type object. Received null
+ GET /admin/content/new 200 in 371ms
+?뵇 Middleware check for: /api/admin/assets/presign (devMode=true)
+??DEV mode: bypassing auth for /api/admin/assets/presign
+ ??Compiled /api/admin/assets/presign in 209ms (684 modules)
+?뱿 Presign request: korea_hiphop_ai_musicvedio_satan1.mp4 (video/mp4)
+?뱷 Creating Asset record (placeholder): korea_hiphop_ai_musicvedio_satan1.mp4
+C:\Users\zeis1\Downloads\vibebox\.next\server\app\api\admin\assets\presign\route.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: TypeError [ERR_INVALID_ARG_TYPE]: The "payload" argument must be of type object. Received null
+C:\Users\zeis1\Downloads\vibebox\node_modules\@prisma\client\runtime\library.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: TypeError [ERR_INVALID_ARG_TYPE]: The "payload" argument must be of type object. Received null
+??Database error: Error [PrismaClientInitializationError]: 
+Invalid `_lib_prisma__WEBPACK_IMPORTED_MODULE_1__.prisma.asset.create()` invocation in
+C:\Users\zeis1\Downloads\vibebox\.next\server\app\api\admin\assets\presign\route.js:110:93
+
+  107 try {
+  108     console.log(`?뱷 Creating Asset record (placeholder): ${fileName}`);
+  109     // placeholder濡??꾩떆 ?앹꽦
+??110     const placeholder = await _lib_prisma__WEBPACK_IMPORTED_MODULE_1__.prisma.asset.create(
+Authentication failed against database server at `localhost`, the provided database credentials for `(not available)` are not valid.
+
+Please make sure to provide valid database credentials for the database server at `localhost`.
+    at <unknown> (C:\Users\zeis1\Downloads\vibebox\.next\server\app\api\admin\assets\presign\route.js:110:93)
+    at async POST (C:\Users\zeis1\Downloads\vibebox\.next\server\app\api\admin\assets\presign\route.js:110:33)
+    at async responseGenerator (C:\Users\zeis1\Downloads\vibebox\.next\server\app\api\admin\assets\presign\route.js:441:38)
+    at async handleResponse (C:\Users\zeis1\Downloads\vibebox\.next\server\app\api\admin\assets\presign\route.js:503:32)
+    at async handler (C:\Users\zeis1\Downloads\vibebox\.next\server\app\api\admin\assets\presign\route.js:555:13) {
+  clientVersion: '5.22.0',
+  errorCode: undefined
+}
+ POST /api/admin/assets/presign 200 in 521ms
+?뵇 Middleware check for: /api/admin/assets/upload (devMode=true)
+??DEV mode: bypassing auth for /api/admin/assets/upload
+Request body exceeded 10MB for /api/admin/assets/upload?key=asset-9b20a5ce-f60c-4368-8eba-a89b53052daa%2Findex.mp4. Only the first 10MB will be available unless configured. See https://nextjs.org/docs/app/api-reference/config/next-config-js/middlewareClientMaxBodySize for more details.
+ ??Compiled /api/admin/assets/upload in 302ms (686 modules)
+ PUT /api/admin/assets/upload?key=asset-9b20a5ce-f60c-4368-8eba-a89b53052daa%2Findex.mp4 200 in 361ms
+?뵇 Middleware check for: /api/admin/content (devMode=true)
+??DEV mode: bypassing auth for /api/admin/content
+ POST /api/admin/content 201 in 24ms
+?뵇 Middleware check for: /admin/content/1771478662110 (devMode=true)
+??DEV mode: bypassing auth for /admin/content/1771478662110
+ ??Compiled /admin/content/[id] in 452ms (690 modules)
+C:\Users\zeis1\Downloads\vibebox\.next\server\app\admin\content\[id]\page.js: Invalid source map. Only conformant source maps can be used to filter stack frames. Cause: TypeError [ERR_INVALID_ARG_TYPE]: The "payload" argument must be of type object. Received null
+ GET /admin/content/1771478662110 200 in 942ms
+?뵇 Middleware check for: /admin/content/1771478662110 (devMode=true)
+??DEV mode: bypassing auth for /admin/content/1771478662110
+ GET /admin/content/1771478662110 200 in 46ms
+?뵇 Middleware check for: /api/admin/content/1771478662110 (devMode=true)
+??DEV mode: bypassing auth for /api/admin/content/1771478662110
+?뱿 GET /api/admin/content/[id] - ID: 1771478662110
+??DEV mode - returning demo data
+ GET /api/admin/content/1771478662110 200 in 34ms
+?뵇 Middleware check for: /api/admin/content/1771478662110 (devMode=true)
+??DEV mode: bypassing auth for /api/admin/content/1771478662110
+?뱿 GET /api/admin/content/[id] - ID: 1771478662110
+??DEV mode - returning demo data
+ GET /api/admin/content/1771478662110 200 in 15ms
+C:\Users\zeis1\Downloads\vibebox\.next\server\app\admin\content\[id]\page.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: TypeError [ERR_INVALID_ARG_TYPE]: The "payload" argument must be of type object. Received null
+ GET / 200 in 115ms
+ ??Compiling /api/public/slots ...
+ ??Compiled /api/public/slots in 573ms (447 modules)
+ GET /api/public/slots?placement=HOME_FOOTER&device=desktop&pageType=home 200 in 738ms
+ GET /api/public/slots?placement=HOME_TOP&device=desktop&pageType=home 200 in 739ms
+ GET / 200 in 90ms
+ GET /api/public/slots?placement=HOME_TOP&device=desktop&pageType=home 200 in 242ms
+ GET /api/public/slots?placement=HOME_FOOTER&device=desktop&pageType=home 200 in 296ms
+ ??Compiled /p/[slug] in 476ms (696 modules)
+C:\Users\zeis1\Downloads\vibebox\.next\server\app\(public)\p\[slug]\page.js: Invalid source map. Only conformant source maps can be used to filter stack frames. Cause: TypeError [ERR_INVALID_ARG_TYPE]: The "payload" argument must be of type object. Received null
+C:\Users\zeis1\Downloads\vibebox\.next\server\app\(public)\p\[slug]\page.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: TypeError [ERR_INVALID_ARG_TYPE]: The "payload" argument must be of type object. Received null
+ GET /p/sample-content 200 in 1031ms
+ GET /api/public/slots?placement=DETAIL_TOP&device=desktop&pageType=post 200 in 732ms
+ GET /api/public/slots?placement=DETAIL_MID&device=desktop 200 in 811ms
+ GET /api/public/slots?placement=DETAIL_BOTTOM&device=desktop 200 in 811ms
+ ??Compiled /api/public/assets/[id]/download in 195ms (418 modules)
+ HEAD /api/public/assets/asset-693c90a1-6405-445d-9ad9-3c9b71f1c047/download 200 in 378ms
+ ??Compiled in 638ms (676 modules)
+?뵇 Middleware check for: /admin/content/1771478662110 (devMode=true)
+??DEV mode: bypassing auth for /admin/content/1771478662110
+ GET /p/sample-content 200 in 148ms
+ GET /admin/content/1771478662110 200 in 201ms
+ ??Compiled / in 246ms (409 modules)
+ GET / 200 in 506ms
+ ??Compiling /api/public/slots ...
+ ??Compiled /api/public/slots in 546ms (427 modules)
+ GET /api/public/slots?placement=HOME_FOOTER&device=desktop&pageType=home 200 in 852ms
+ GET /api/public/slots?placement=HOME_TOP&device=desktop&pageType=home 200 in 853ms
+ GET / 200 in 111ms
+ GET /api/public/slots?placement=HOME_TOP&device=desktop&pageType=home 200 in 221ms
+ GET /api/public/slots?placement=HOME_FOOTER&device=desktop&pageType=home 200 in 265ms
+ GET /p/sample-content 200 in 87ms
+ GET /api/public/slots?placement=DETAIL_TOP&device=desktop&pageType=post 200 in 243ms
+ GET /api/public/slots?placement=DETAIL_MID&device=desktop 200 in 313ms
+ GET /api/public/slots?placement=DETAIL_BOTTOM&device=desktop 200 in 313ms
+ GET / 200 in 60ms
+ GET /api/public/slots?placement=HOME_TOP&device=desktop&pageType=home 200 in 219ms
+ GET /api/public/slots?placement=HOME_FOOTER&device=desktop&pageType=home 200 in 328ms
+?뵇 Middleware check for: /admin/content/new (devMode=true)
+??DEV mode: bypassing auth for /admin/content/new
+ GET /admin/content/new 200 in 44ms
+?뵇 Middleware check for: /admin/content (devMode=true)
+??DEV mode: bypassing auth for /admin/content
+ GET /admin/content 200 in 43ms
+?뵇 Middleware check for: /api/admin/content (devMode=true)
+??DEV mode: bypassing auth for /api/admin/content
+ ??Compiled /api/admin/content in 285ms (436 modules)
+ GET /api/admin/content 200 in 482ms
+?뵇 Middleware check for: /api/admin/content (devMode=true)
+??DEV mode: bypassing auth for /api/admin/content
+ GET /api/admin/content 200 in 13ms
+?뵇 Middleware check for: /api/admin/content/1771478662110 (devMode=true)
+??DEV mode: bypassing auth for /api/admin/content/1771478662110
+ ??Compiled /api/admin/content/[id] in 159ms (438 modules)
+ DELETE /api/admin/content/1771478662110 200 in 214ms
+?뵇 Middleware check for: /api/admin/content/1771462137900 (devMode=true)
+??DEV mode: bypassing auth for /api/admin/content/1771462137900
+ DELETE /api/admin/content/1771462137900 200 in 19ms
+?뵇 Middleware check for: /admin/content/new (devMode=true)
+??DEV mode: bypassing auth for /admin/content/new
+ GET /admin/content/new 200 in 41ms
+?뵇 Middleware check for: /api/admin/assets/presign (devMode=true)
+??DEV mode: bypassing auth for /api/admin/assets/presign
+ ??Compiled /api/admin/assets/presign in 192ms (441 modules)
+?뱿 Presign request: korea_hiphop_ai_musicvedio_satan1.mp4 (video/mp4)
+?뱷 Creating Asset record (placeholder): korea_hiphop_ai_musicvedio_satan1.mp4
+C:\Users\zeis1\Downloads\vibebox\.next\server\app\api\admin\assets\presign\route.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: TypeError [ERR_INVALID_ARG_TYPE]: The "payload" argument must be of type object. Received null
+C:\Users\zeis1\Downloads\vibebox\node_modules\@prisma\client\runtime\library.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: TypeError [ERR_INVALID_ARG_TYPE]: The "payload" argument must be of type object. Received null
+??Database error: Error [PrismaClientInitializationError]: 
+Invalid `_lib_prisma__WEBPACK_IMPORTED_MODULE_1__.prisma.asset.create()` invocation in
+C:\Users\zeis1\Downloads\vibebox\.next\server\app\api\admin\assets\presign\route.js:110:93
+
+  107 try {
+  108     console.log(`?뱷 Creating Asset record (placeholder): ${fileName}`);
+  109     // placeholder濡??꾩떆 ?앹꽦
+??110     const placeholder = await _lib_prisma__WEBPACK_IMPORTED_MODULE_1__.prisma.asset.create(
+Authentication failed against database server at `localhost`, the provided database credentials for `(not available)` are not valid.
+
+Please make sure to provide valid database credentials for the database server at `localhost`.
+    at <unknown> (C:\Users\zeis1\Downloads\vibebox\.next\server\app\api\admin\assets\presign\route.js:110:93)
+    at async POST (C:\Users\zeis1\Downloads\vibebox\.next\server\app\api\admin\assets\presign\route.js:110:33)
+    at async responseGenerator (C:\Users\zeis1\Downloads\vibebox\.next\server\app\api\admin\assets\presign\route.js:441:38)
+    at async handleResponse (C:\Users\zeis1\Downloads\vibebox\.next\server\app\api\admin\assets\presign\route.js:503:32)
+    at async handler (C:\Users\zeis1\Downloads\vibebox\.next\server\app\api\admin\assets\presign\route.js:555:13) {
+  clientVersion: '5.22.0',
+  errorCode: undefined
+}
+ POST /api/admin/assets/presign 200 in 359ms
+?뵇 Middleware check for: /api/admin/assets/upload (devMode=true)
+??DEV mode: bypassing auth for /api/admin/assets/upload
+Request body exceeded 10MB for /api/admin/assets/upload?key=asset-f3ed17a1-42ba-487d-ab9d-1ff0597c408b%2Findex.mp4. Only the first 10MB will be available unless configured. See https://nextjs.org/docs/app/api-reference/config/next-config-js/middlewareClientMaxBodySize for more details.
+ ??Compiled /api/admin/assets/upload in 211ms (443 modules)
+ PUT /api/admin/assets/upload?key=asset-f3ed17a1-42ba-487d-ab9d-1ff0597c408b%2Findex.mp4 200 in 262ms
+?뵇 Middleware check for: /api/admin/content (devMode=true)
+??DEV mode: bypassing auth for /api/admin/content
+ POST /api/admin/content 201 in 24ms
+?뵇 Middleware check for: /admin/content/1771478947627 (devMode=true)
+??DEV mode: bypassing auth for /admin/content/1771478947627
+ GET /admin/content/1771478947627 200 in 46ms
+?뵇 Middleware check for: /admin/content/1771478947627 (devMode=true)
+??DEV mode: bypassing auth for /admin/content/1771478947627
+ GET /admin/content/1771478947627 200 in 45ms
+?뵇 Middleware check for: /api/admin/content/1771478947627 (devMode=true)
+??DEV mode: bypassing auth for /api/admin/content/1771478947627
+?뱿 GET /api/admin/content/[id] - ID: 1771478947627
+??DEV mode - returning demo data
+ GET /api/admin/content/1771478947627 200 in 23ms
+?뵇 Middleware check for: /api/admin/content/1771478947627 (devMode=true)
+??DEV mode: bypassing auth for /api/admin/content/1771478947627
+?뱿 GET /api/admin/content/[id] - ID: 1771478947627
+??DEV mode - returning demo data
+ GET /api/admin/content/1771478947627 200 in 15ms
+ GET / 200 in 106ms
+ GET /api/public/slots?placement=HOME_TOP&device=desktop&pageType=home 200 in 215ms
+ GET /api/public/slots?placement=HOME_FOOTER&device=desktop&pageType=home 200 in 292ms
+ GET /p/sample-content 200 in 79ms
+ GET /api/public/slots?placement=DETAIL_TOP&device=desktop&pageType=post 200 in 276ms
+ GET /api/public/slots?placement=DETAIL_MID&device=desktop 200 in 342ms
+ GET /api/public/slots?placement=DETAIL_BOTTOM&device=desktop 200 in 342ms
+ ??Compiled in 203ms (258 modules)
+?뵇 Middleware check for: /admin/content/1771478947627 (devMode=true)
+??DEV mode: bypassing auth for /admin/content/1771478947627
+ GET /admin/content/1771478947627 200 in 90ms
+ ??Compiling /_not-found ...
+ ??Compiled /_not-found in 528ms (658 modules)
+C:\Users\zeis1\Downloads\vibebox\.next\server\app\_not-found\page.js: Invalid source map. Only conformant source maps can be used to filter stack frames. Cause: TypeError [ERR_INVALID_ARG_TYPE]: The "payload" argument must be of type object. Received null
+ GET /p/sample-content 404 in 743ms
+C:\Users\zeis1\Downloads\vibebox\.next\server\app\_not-found\page.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: TypeError [ERR_INVALID_ARG_TYPE]: The "payload" argument must be of type object. Received null
+ GET /p/sample-content 200 in 120ms
+ ??Compiling /api/public/slots ...
+ ??Compiled /api/public/slots in 516ms (426 modules)
+ GET /api/public/slots?placement=DETAIL_MID&device=desktop 200 in 841ms
+ GET /api/public/slots?placement=DETAIL_BOTTOM&device=desktop 200 in 841ms
+ GET /api/public/slots?placement=DETAIL_TOP&device=desktop&pageType=post 200 in 842ms
+ GET / 200 in 128ms
+ GET /api/public/slots?placement=HOME_TOP&device=desktop&pageType=home 200 in 292ms
+ GET /api/public/slots?placement=HOME_FOOTER&device=desktop&pageType=home 200 in 334ms
+ GET / 200 in 64ms
+ GET /api/public/slots?placement=HOME_TOP&device=desktop&pageType=home 200 in 206ms
+ GET /api/public/slots?placement=HOME_FOOTER&device=desktop&pageType=home 200 in 299ms
+ GET /p/sample-content 200 in 77ms
+ GET /api/public/slots?placement=DETAIL_TOP&device=desktop&pageType=post 200 in 248ms
+ GET /api/public/slots?placement=DETAIL_MID&device=desktop 200 in 290ms
+ GET /api/public/slots?placement=DETAIL_BOTTOM&device=desktop 200 in 290ms
+ GET / 200 in 63ms
+ GET /api/public/slots?placement=HOME_TOP&device=desktop&pageType=home 200 in 262ms
+ GET /api/public/slots?placement=HOME_FOOTER&device=desktop&pageType=home 200 in 338ms
+?뵇 Middleware check for: /admin/content/new (devMode=true)
+??DEV mode: bypassing auth for /admin/content/new
+ GET /admin/content/new 200 in 43ms
+?뵇 Middleware check for: /admin/content (devMode=true)
+??DEV mode: bypassing auth for /admin/content
+ GET /admin/content 200 in 44ms
+?뵇 Middleware check for: /api/admin/content (devMode=true)
+??DEV mode: bypassing auth for /api/admin/content
+ ??Compiled /api/admin/content in 193ms (437 modules)
+ GET /api/admin/content 200 in 401ms
+?뵇 Middleware check for: /api/admin/content (devMode=true)
+??DEV mode: bypassing auth for /api/admin/content
+ GET /api/admin/content 200 in 14ms
+?뵇 Middleware check for: /api/admin/content/1771478947627 (devMode=true)
+??DEV mode: bypassing auth for /api/admin/content/1771478947627
+ ??Compiled /api/admin/content/[id] in 165ms (439 modules)
+ DELETE /api/admin/content/1771478947627 200 in 208ms
+?뵇 Middleware check for: /admin/content/new (devMode=true)
+??DEV mode: bypassing auth for /admin/content/new
+ GET /admin/content/new 200 in 45ms
+?뵇 Middleware check for: /api/admin/assets/presign (devMode=true)
+??DEV mode: bypassing auth for /api/admin/assets/presign
+ ??Compiled /api/admin/assets/presign in 273ms (442 modules)
+?뱿 Presign request: korea_hiphop_ai_musicvedio_satan1.mp4 (video/mp4)
+?뱷 Creating Asset record (placeholder): korea_hiphop_ai_musicvedio_satan1.mp4
+C:\Users\zeis1\Downloads\vibebox\.next\server\app\api\admin\assets\presign\route.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: TypeError [ERR_INVALID_ARG_TYPE]: The "payload" argument must be of type object. Received null
+C:\Users\zeis1\Downloads\vibebox\node_modules\@prisma\client\runtime\library.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: TypeError [ERR_INVALID_ARG_TYPE]: The "payload" argument must be of type object. Received null
+??Database error: Error [PrismaClientInitializationError]: 
+Invalid `_lib_prisma__WEBPACK_IMPORTED_MODULE_1__.prisma.asset.create()` invocation in
+C:\Users\zeis1\Downloads\vibebox\.next\server\app\api\admin\assets\presign\route.js:110:93
+
+  107 try {
+  108     console.log(`?뱷 Creating Asset record (placeholder): ${fileName}`);
+  109     // placeholder濡??꾩떆 ?앹꽦
+??110     const placeholder = await _lib_prisma__WEBPACK_IMPORTED_MODULE_1__.prisma.asset.create(
+Authentication failed against database server at `localhost`, the provided database credentials for `(not available)` are not valid.
+
+Please make sure to provide valid database credentials for the database server at `localhost`.
+    at <unknown> (C:\Users\zeis1\Downloads\vibebox\.next\server\app\api\admin\assets\presign\route.js:110:93)
+    at async POST (C:\Users\zeis1\Downloads\vibebox\.next\server\app\api\admin\assets\presign\route.js:110:33)
+    at async responseGenerator (C:\Users\zeis1\Downloads\vibebox\.next\server\app\api\admin\assets\presign\route.js:441:38)
+    at async handleResponse (C:\Users\zeis1\Downloads\vibebox\.next\server\app\api\admin\assets\presign\route.js:503:32)
+    at async handler (C:\Users\zeis1\Downloads\vibebox\.next\server\app\api\admin\assets\presign\route.js:555:13) {
+  clientVersion: '5.22.0',
+  errorCode: undefined
+}
+ POST /api/admin/assets/presign 200 in 420ms
+?뵇 Middleware check for: /api/admin/assets/upload (devMode=true)
+??DEV mode: bypassing auth for /api/admin/assets/upload
+Request body exceeded 10MB for /api/admin/assets/upload?key=asset-43e5192a-f589-4e75-991f-d63909918569%2Findex.mp4. Only the first 10MB will be available unless configured. See https://nextjs.org/docs/app/api-reference/config/next-config-js/middlewareClientMaxBodySize for more details.
+ ??Compiled /api/admin/assets/upload in 239ms (444 modules)
+ PUT /api/admin/assets/upload?key=asset-43e5192a-f589-4e75-991f-d63909918569%2Findex.mp4 200 in 288ms
+?뵇 Middleware check for: /api/admin/content (devMode=true)
+??DEV mode: bypassing auth for /api/admin/content
+ POST /api/admin/content 201 in 17ms
+?뵇 Middleware check for: /admin/content/1771479190548 (devMode=true)
+??DEV mode: bypassing auth for /admin/content/1771479190548
+ GET /admin/content/1771479190548 200 in 38ms
+?뵇 Middleware check for: /admin/content/1771479190548 (devMode=true)
+??DEV mode: bypassing auth for /admin/content/1771479190548
+ GET /admin/content/1771479190548 200 in 38ms
+?뵇 Middleware check for: /api/admin/content/1771479190548 (devMode=true)
+??DEV mode: bypassing auth for /api/admin/content/1771479190548
+?뱿 GET /api/admin/content/[id] - ID: 1771479190548
+??DEV mode - returning demo data
+ GET /api/admin/content/1771479190548 200 in 25ms
+?뵇 Middleware check for: /api/admin/content/1771479190548 (devMode=true)
+??DEV mode: bypassing auth for /api/admin/content/1771479190548
+?뱿 GET /api/admin/content/[id] - ID: 1771479190548
+??DEV mode - returning demo data
+ GET /api/admin/content/1771479190548 200 in 15ms
+ GET / 200 in 98ms
+ GET /api/public/slots?placement=HOME_TOP&device=desktop&pageType=home 200 in 336ms
+ GET /api/public/slots?placement=HOME_FOOTER&device=desktop&pageType=home 200 in 365ms
+ GET /p/sample-content 200 in 79ms
+ GET /api/public/slots?placement=DETAIL_TOP&device=desktop&pageType=post 200 in 250ms
+ GET /api/public/slots?placement=DETAIL_MID&device=desktop 200 in 309ms
+ GET /api/public/slots?placement=DETAIL_BOTTOM&device=desktop 200 in 309ms
+ ??Compiled /a/[slug] in 490ms (445 modules)
+?뵇 Middleware check for: /admin/content/1771479190548 (devMode=true)
+??DEV mode: bypassing auth for /admin/content/1771479190548
+ GET /a/sample-content 200 in 733ms
+ GET /p/sample-content 200 in 217ms
+ GET /admin/content/1771479190548 200 in 111ms
+ GET /api/public/slots?placement=DETAIL_TOP&device=desktop&pageType=html_app 200 in 33ms
+ GET /api/public/slots?placement=DETAIL_MID&device=desktop 200 in 46ms
+ GET /api/public/slots?placement=DETAIL_BOTTOM&device=desktop 200 in 45ms
+ GET /a/sample-content 200 in 72ms
+ GET /api/public/slots?placement=DETAIL_TOP&device=desktop&pageType=html_app 200 in 18ms
+ GET /api/public/slots?placement=DETAIL_MID&device=desktop 200 in 28ms
+ GET /api/public/slots?placement=DETAIL_BOTTOM&device=desktop 200 in 28ms
+ GET / 200 in 81ms
+ GET /api/public/slots?placement=HOME_TOP&device=desktop&pageType=home 200 in 347ms
+ GET /api/public/slots?placement=HOME_FOOTER&device=desktop&pageType=home 200 in 386ms
+ GET / 200 in 65ms
+ GET /api/public/slots?placement=HOME_TOP&device=desktop&pageType=home 200 in 220ms
+ GET /api/public/slots?placement=HOME_FOOTER&device=desktop&pageType=home 200 in 281ms
+ GET /p/sample-content 200 in 69ms
+ GET /api/public/slots?placement=DETAIL_TOP&device=desktop&pageType=post 200 in 207ms
+ GET /api/public/slots?placement=DETAIL_MID&device=desktop 200 in 285ms
+ GET /api/public/slots?placement=DETAIL_BOTTOM&device=desktop 200 in 285ms
+ GET / 200 in 60ms
+ GET /api/public/slots?placement=HOME_TOP&device=desktop&pageType=home 200 in 249ms
+ GET /api/public/slots?placement=HOME_FOOTER&device=desktop&pageType=home 200 in 278ms
+ GET /a/neuroiq-pro-ultimate-v2 200 in 81ms
+ GET /api/public/slots?placement=DETAIL_TOP&device=desktop&pageType=html_app 200 in 288ms
+ GET /api/public/slots?placement=DETAIL_MID&device=desktop 200 in 341ms
+ GET /api/public/slots?placement=DETAIL_BOTTOM&device=desktop 200 in 341ms
+ GET / 200 in 62ms
+ GET /api/public/slots?placement=HOME_TOP&device=desktop&pageType=home 200 in 230ms
+ GET /api/public/slots?placement=HOME_FOOTER&device=desktop&pageType=home 200 in 293ms
+ HEAD /api/public/slots?placement=DETAIL_TOP 200 in 13ms
+ ??Compiled /api/public/assets/list in 376ms (670 modules)
+ HEAD /api/public/assets/list 200 in 604ms
+ GET /api/public/slots?placement=DETAIL_TOP 200 in 22ms
+ GET /api/public/assets/list 200 in 20ms
+ GET /a/sample-content 200 in 136ms
+ GET /api/public/slots?placement=DETAIL_TOP 200 in 12ms
+ GET /api/public/slots?placement=DETAIL_TOP 200 in 12ms
+ GET /api/public/assets/list 200 in 22ms
+ GET /a/sample-content 200 in 62ms
+ GET /api/public/slots?placement=DETAIL_TOP 200 in 11ms
+ GET /api/public/assets/list 200 in 17ms
+ GET /a/sample-content 200 in 63ms

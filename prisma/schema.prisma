@@ -1,0 +1,193 @@
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─── 관리자 계정 ───────────────────────────────────────
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  role         Role     @default(ADMIN)
+  createdAt    DateTime @default(now())
+}
+
+enum Role {
+  ADMIN
+  SUPER_ADMIN
+}
+
+// ─── 사이트 설정 (페이지 빌더) ──────────────────────────
+model SiteSettings {
+  id        String   @id @default("singleton")
+  // 테마
+  colorPrimary   String  @default("#6366f1")
+  colorSecondary String  @default("#8b5cf6")
+  colorBg        String  @default("#ffffff")
+  colorText      String  @default("#111827")
+  // 배경
+  bgType         String  @default("color") // color | image | gradient
+  bgValue        String  @default("#ffffff")
+  // 헤더
+  siteTitle      String  @default("My Platform")
+  logoUrl        String?
+  // 메뉴 / 버튼 / 옵션 - JSON 배열로 유연하게 관리
+  menuItems      Json    @default("[]")   // [{label, url, order}]
+  optionItems    Json    @default("[]")   // [{label, value}]
+  buttonItems    Json    @default("[]")   // [{label, actionType, actionValue, style}]
+  // 커피값 후원 버튼
+  donateEnabled  Boolean @default(false)
+  donateLabel    String  @default("☕ 커피값 후원")
+  donateUrl      String  @default("")
+  donateColor    String  @default("#f59e0b")
+  // 섹션 레이아웃 (드래그 순서)
+  sections       Json    @default("[]")   // [{type, contentType, limit, title}]
+  updatedAt      DateTime @updatedAt
+}
+
+// ─── 콘텐츠 ────────────────────────────────────────────
+model Content {
+  id          String      @id @default(cuid())
+  type        ContentType
+  slug        String      @unique
+  title       String
+  description String?
+  body        String?     // Markdown 또는 HTML
+  coverImage  String?     // Asset.id 참조
+  status      Status      @default(DRAFT)
+  publishedAt DateTime?
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  // SEO
+  seoTitle       String?
+  seoDescription String?
+  seoKeywords    String?
+  canonicalUrl   String?
+  ogImage        String?
+  // 관계
+  tags    ContentTag[]
+  assets  Asset[]
+  @@index([status, publishedAt])
+  @@index([type, status])
+}
+
+enum ContentType {
+  POST
+  HTML_APP
+  PROJECT
+  GAME
+  IMAGE
+  VIDEO
+  LINK
+}
+
+enum Status {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+model Tag {
+  id       String       @id @default(cuid())
+  name     String       @unique
+  slug     String       @unique
+  contents ContentTag[]
+}
+
+model ContentTag {
+  contentId String
+  tagId     String
+  content   Content @relation(fields: [contentId], references: [id], onDelete: Cascade)
+  tag       Tag     @relation(fields: [tagId], references: [id], onDelete: Cascade)
+  @@id([contentId, tagId])
+}
+
+// ─── 파일 에셋 ─────────────────────────────────────────
+model Asset {
+  id          String   @id @default(cuid())
+  storageKey  String   @unique  // S3/GCS 키
+  originalName String
+  mime        String
+  size        Int      // bytes
+  publicFlag  Boolean  @default(false)
+  cdnUrl      String?  // CDN 공개 URL
+  contentId   String?
+  content     Content? @relation(fields: [contentId], references: [id], onDelete: SetNull)
+  createdAt   DateTime @default(now())
+  @@index([contentId])
+}
+
+// ─── 수익화 슬롯 ────────────────────────────────────────
+model AdSlot {
+  id             String     @id @default(cuid())
+  name           String
+  type           SlotType
+  placement      String     // HOME_TOP, DETAIL_MID 등
+  priority       Int        @default(0)
+  status         SlotStatus @default(ACTIVE)
+  startAt        DateTime?
+  endAt          DateTime?
+  // 타게팅
+  deviceTarget   String     @default("all")   // mobile | desktop | all
+  pageTarget     String     @default("all")   // home | post | html_app | all
+  tagTarget      String?    // 특정 태그 slug
+  // 컨텐츠 (타입별 JSON)
+  payloadJson    Json
+  // 컴플라이언스
+  disclosureText String?
+  showDisclosure Boolean    @default(false)
+  // 통계
+  renderCount    Int        @default(0)
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+  clicks         ClickEvent[]
+  @@index([placement, status, priority])
+}
+
+enum SlotType {
+  ADSENSE
+  BANNER_IMAGE
+  COUPON_CARD
+  AFFILIATE_PRODUCT
+  TEXT_LINK
+  NATIVE_CARD
+}
+
+enum SlotStatus {
+  ACTIVE
+  PAUSED
+  SCHEDULED
+  EXPIRED
+}
+
+// ─── 클릭 트래킹 ────────────────────────────────────────
+model ClickEvent {
+  id          String   @id @default(cuid())
+  slotId      String
+  slot        AdSlot   @relation(fields: [slotId], references: [id], onDelete: Cascade)
+  url         String
+  pagePath    String
+  referrer    String?
+  userAgentHash String?
+  ts          DateTime @default(now())
+  @@index([slotId, ts])
+}
+
+// ─── HTML 앱 (管理者가 정의한 단일 HTML) ──────────────
+model App {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  htmlContent String   // HTML 파일 전체 내용
+  publicPath  String   @unique  // /apps/{appId}
+  isActive    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  @@index([isActive])
+  @@index([createdAt])
+}

@@ -1,0 +1,39 @@
+[
+  {
+    "id": "1771542482417",
+    "title": "뇌파",
+    "slug": "neuroiq-pro-ultimate-v2",
+    "type": "HTML_APP",
+    "description": "",
+    "excerpt": "",
+    "content": "",
+    "body": "",
+    "coverImage": "/uploads/backgrounds/bg-e6539b51-cf96-4b0b-9d62-1d715727209a.png",
+    "status": "PUBLISHED",
+    "views": 0,
+    "publishedAt": "2026-02-19T23:08:02.417Z",
+    "createdAt": "2026-02-19T23:08:02.417Z",
+    "updatedAt": "2026-02-19T23:08:02.417Z",
+    "tags": [],
+    "assets": [
+      "asset-f7389f72-2885-4cbb-a012-913fdf8842ed"
+    ]
+  },
+  {
+    "id": "asset-f7389f72-2885-4cbb-a012-913fdf8842ed",
+    "title": "HTML 앱 (02. 20. 오전 08:07:33)",
+    "slug": "html_app-8842ed",
+    "excerpt": "",
+    "content": "",
+    "status": "PUBLISHED",
+    "type": "HTML_APP",
+    "views": 0,
+    "publishedAt": "2026-02-19T23:07:33.204Z",
+    "createdAt": "2026-02-19T23:07:33.204Z",
+    "updatedAt": "2026-02-19T23:07:33.204Z",
+    "tags": [],
+    "assets": [
+      "asset-f7389f72-2885-4cbb-a012-913fdf8842ed"
+    ]
+  }
+]

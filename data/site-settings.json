@@ -1,0 +1,73 @@
+{
+  "id": "singleton",
+  "siteTitle": "VIBE BOX",
+  "logoUrl": "",
+  "colorPrimary": "#908484",
+  "colorSecondary": "#6e877e",
+  "colorBg": "#FFFFFF",
+  "colorText": "#968888",
+  "donateEnabled": true,
+  "donateLabel": "☕ 커피 한잔 후원하기",
+  "donateUrl": "kakao pay",
+  "donateColor": "#d0ad2f",
+  "donateAccount": "kakao pay",
+  "donateCrypto": "",
+  "latestPostBtnColor": "#908484",
+  "menu": [
+    {
+      "name": "Home",
+      "url": "/"
+    },
+    {
+      "name": "App",
+      "url": "/tag/App"
+    },
+    {
+      "name": "Game",
+      "url": "/tag/Game"
+    },
+    {
+      "name": "Portfolio",
+      "url": "/tag/Portfolio"
+    }
+  ],
+  "buttons": [
+    {
+      "text": "구독하기",
+      "url": "https://example.com/subscribe",
+      "color": "#c4971c"
+    }
+  ],
+  "sections": [
+    {
+      "title": "환영합니다",
+      "description": "Vibebox에 오신 것을 환영합니다!",
+      "icon": "👋"
+    }
+  ],
+  "bgType": "gradient",
+  "bgValue": "/uploads/asset-0984f5df-63c8-44dc-9541-427319075b3e/index.jpg",
+  "donateQrImage": "/uploads/backgrounds/bg-2da944de-adbc-469a-83bd-df576a773ac9.jpg",
+  "donateItems": [
+    {
+      "type": "link",
+      "label": "계좌번호",
+      "value": "kakao pay"
+    },
+    {
+      "type": "qr",
+      "label": "QR 코드",
+      "value": "/uploads/backgrounds/bg-2da944de-adbc-469a-83bd-df576a773ac9.jpg"
+    },
+    {
+      "type": "crypto",
+      "label": "Bitcoin",
+      "value": "bc1q86v59zwytg72mdtsv5l3nkhlda7wztmkv4gv9e"
+    },
+    {
+      "type": "crypto",
+      "label": "Ethereum",
+      "value": "0xB7BBF47aa5c8aC9551C7DEC9dD175DbBC5F98E54"
+    }
+  ]
+}

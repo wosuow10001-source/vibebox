@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>테스트 앱</title>
+    <style>
+        body { font-family: Arial; text-align: center; padding: 50px; background: #f0f0f0; }
+        h1 { color: #333; }
+        p { font-size: 20px; color: #666; }
+    </style>
+</head>
+<body>
+    <h1>✅ 이 테스트 앱이 보이면 성공!</h1>
+    <p id="time"></p>
+    <script>
+        document.getElementById('time').textContent = new Date().toLocaleString('ko-KR');
+    </script>
+</body>
+</html>
