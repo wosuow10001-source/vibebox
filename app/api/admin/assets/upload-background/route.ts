@@ -33,8 +33,8 @@ export async function POST(req: NextRequest) {
       const formData = await req.formData();
       const fileData = formData.get('file');
 
-      if (fileData instanceof File) {
-        file = Buffer.from(await fileData.arrayBuffer());
+      if (fileData && typeof fileData === 'object' && 'arrayBuffer' in fileData) {
+        file = Buffer.from(await (fileData as any).arrayBuffer());
         contentId = `thumbnail-${Date.now()}`;
         console.log('File processed successfully:', { fileSize: file.length, contentId });
       } else {
@@ -161,7 +161,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json(
       {
-        error: 'Background upload failed: ${error?.message || "Unknown error"}',
+        error: `Background upload failed: ${error?.message || 'Unknown error'}`,
       },
       {
         status: 500,
