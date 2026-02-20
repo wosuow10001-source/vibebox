@@ -7,43 +7,12 @@
 [build.environment]
   NODE_VERSION = "18"
 
+# Next.js Netlify 플러그인 사용
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
 # ⚠️ 중요: 런타임 환경 변수는 Netlify 대시보드에서 설정해야 합니다!
 # Site configuration → Environment variables 에서 다음 변수들을 추가하세요:
 # - DEV_LOGIN = true
 # - DEV_EVAL = true  
 # - NEXT_PUBLIC_BASE_URL = https://1vibebox.netlify.app
-
-# Next.js 라우팅 지원
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  force = false
-  conditions = {Role = ["admin"]}
-
-# API 라우트 처리
-[[headers]]
-  for = "/api/*"
-  [headers.values]
-    Access-Control-Allow-Origin = "*"
-    Access-Control-Allow-Methods = "GET, POST, PUT, DELETE, PATCH, OPTIONS"
-    Access-Control-Allow-Headers = "Content-Type, Authorization"
-
-# 정적 파일 캐싱
-[[headers]]
-  for = "/uploads/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/_next/static/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-# 관리자 페이지 보호 (선택사항)
-# [[redirects]]
-#   from = "/admin/*"
-#   to = "/admin/login"
-#   status = 302
-#   force = false
-#   conditions = {Role = ["!admin"]}

@@ -15,32 +15,33 @@
     "prisma:seed": "node prisma/seed.js"
   },
   "dependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "next": "^15.0.0",
-    "@prisma/client": "^5.7.1",
     "@aws-sdk/client-s3": "^3.500.0",
     "@aws-sdk/s3-request-presigner": "^3.500.0",
-    "jose": "^5.1.0",
-    "bcryptjs": "^2.4.3",
     "@hookform/resolvers": "^3.3.4",
-    "react-hook-form": "^7.50.0",
-    "clsx": "^2.0.0",
+    "@prisma/client": "^5.7.1",
+    "bcryptjs": "^2.4.3",
     "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
+    "jose": "^5.1.0",
     "lucide-react": "^0.460.0",
-    "next-auth": "^5.0.0-beta.15"
+    "next": "^15.0.0",
+    "next-auth": "^5.0.0-beta.15",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-hook-form": "^7.50.0"
   },
   "devDependencies": {
-    "typescript": "^5.3.3",
+    "@netlify/plugin-nextjs": "^5.15.8",
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20.10.6",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "@types/bcryptjs": "^2.4.6",
     "autoprefixer": "^10.4.16",
-    "postcss": "^8.4.32",
-    "tailwindcss": "^3.4.1",
     "eslint": "^8.56.0",
     "eslint-config-next": "^15.0.0",
-    "prisma": "^5.7.1"
+    "postcss": "^8.4.32",
+    "prisma": "^5.7.1",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.3.3"
   }
 }
