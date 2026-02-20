@@ -19,13 +19,18 @@ export function AdminPageLayout({ children }: { children: React.ReactNode }) {
   const [settings, setSettings] = useState<SiteSettings | null>(null);
   const pathname = usePathname();
 
+  // 로그인 페이지에서는 사이트 설정 로드하지 않음
+  const isLoginPage = pathname === '/admin/login';
+
   useEffect(() => {
+    if (isLoginPage) return;
+
     // 사이트 설정 로드
     fetch('/api/admin/site-settings')
       .then(res => res.json())
       .then(data => setSettings(data))
       .catch(err => console.error('Failed to load settings:', err));
-  }, []);
+  }, [isLoginPage]);
 
   const s = settings || {};
 

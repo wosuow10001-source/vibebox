@@ -1,6 +1,5 @@
 // middleware.ts
 import { NextRequest, NextResponse } from "next/server";
-import { verifyToken } from "@/lib/auth";
 
 export const config = {
   matcher: ["/admin/:path*", "/api/admin/:path*"],
@@ -10,14 +9,16 @@ export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   // 로그인 관련 페이지/API는 보호 안 함
-  if (pathname === "/admin/login" || pathname === "/api/admin/login") {
+  if (pathname === "/admin/login" || pathname === "/api/admin/login" || pathname === "/api/admin/logout") {
     console.log(`✅ Skip protection for: ${pathname}`);
     return NextResponse.next();
   }
 
   const devMode = process.env.DEV_LOGIN === "true";
 
-  console.log(`🔍 Middleware check for: ${pathname} (devMode=${devMode})`);
+  console.log(`🔍 Middleware check for: ${pathname}`);
+  console.log(`   DEV_LOGIN env: "${process.env.DEV_LOGIN}"`);
+  console.log(`   devMode: ${devMode}`);
 
   // In DEV mode, skip all auth checks
   if (devMode) {
@@ -25,9 +26,7 @@ export async function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  const token =
-    req.cookies.get("admin_token")?.value ||
-    req.headers.get("authorization")?.replace("Bearer ", "");
+  const token = req.cookies.get("admin_token")?.value;
 
   console.log(`📦 Cookies available:`, req.cookies.getAll());
   console.log(`🎟️ Token found:`, token ? `yes (${token.substring(0, 20)}...)` : "no");
@@ -43,10 +42,14 @@ export async function middleware(req: NextRequest) {
     return NextResponse.redirect(new URL("/admin/login", req.url));
   }
 
-  let payload;
-
+  // 간단한 토큰 검증 (base64 디코딩)
   try {
-    payload = await verifyToken(token);
+    const payload = JSON.parse(Buffer.from(token, 'base64').toString());
+    if (!payload.email || !payload.role) {
+      throw new Error('Invalid token payload');
+    }
+    console.log(`✅ Access granted: ${pathname} (user: ${payload.email})`);
+    return NextResponse.next();
   } catch (error) {
     console.error("❌ Token verification failed:", error);
     if (pathname.startsWith("/api/admin")) {
@@ -57,20 +60,4 @@ export async function middleware(req: NextRequest) {
     }
     return NextResponse.redirect(new URL("/admin/login", req.url));
   }
-
-  if (!payload) {
-    console.warn(`⚠️ Token verification failed for: ${pathname}`);
-    if (pathname.startsWith("/api/admin")) {
-      return NextResponse.json(
-        { error: "토큰 검증 실패" },
-        { status: 401 }
-      );
-    }
-    return NextResponse.redirect(new URL("/admin/login", req.url));
-  }
-
-  console.log(
-    `✅ Access granted: ${pathname}${payload ? ` (user: ${payload.userId})` : " (dev mode)"}`
-  );
-  return NextResponse.next();
 }

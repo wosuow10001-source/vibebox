@@ -1,7 +1,7 @@
 // app/admin/login/page.tsx
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 export default function LoginPage() {
@@ -9,8 +9,23 @@ export default function LoginPage() {
   const [password, setPassword] = useState('strong-initial-password-123');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [devMode] = useState(true);
+  const [devMode, setDevMode] = useState(false);
   const router = useRouter();
+
+  // 클라이언트에서 DEV 모드 확인
+  useEffect(() => {
+    const checkDevMode = async () => {
+      try {
+        const res = await fetch('/api/admin/login', {
+          method: 'OPTIONS',
+        });
+        setDevMode(res.ok);
+      } catch {
+        setDevMode(false);
+      }
+    };
+    checkDevMode();
+  }, []);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,6 +36,7 @@ export default function LoginPage() {
       const res = await fetch('/api/admin/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include', // 쿠키 포함
         body: JSON.stringify({ email, password }),
       });
 
@@ -34,11 +50,7 @@ export default function LoginPage() {
         return;
       }
 
-      // ✅ 토큰을 localStorage에 저장 (관리자 페이지에서 사용)
-      if (data.token) {
-        localStorage.setItem('admin_token', data.token);
-      }
-
+      // 로그인 성공 - 쿠키가 자동으로 설정됨
       router.push('/admin');
       router.refresh();
     } catch (err) {

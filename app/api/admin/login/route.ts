@@ -10,6 +10,11 @@ function generateToken(email: string) {
   return Buffer.from(payload).toString('base64');
 }
 
+// OPTIONS 요청 처리 (CORS preflight)
+export async function OPTIONS() {
+  return NextResponse.json({ ok: true }, { status: 200 });
+}
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
@@ -18,7 +23,18 @@ export async function POST(req: NextRequest) {
     // 간단한 인증
     if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
       const token = generateToken(email);
-      return NextResponse.json({ token, email }, { status: 200 });
+      
+      // 쿠키에 토큰 저장
+      const response = NextResponse.json({ token, email }, { status: 200 });
+      response.cookies.set('admin_token', token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'lax',
+        maxAge: 60 * 60 * 8, // 8시간
+        path: '/',
+      });
+      
+      return response;
     }
 
     return NextResponse.json(

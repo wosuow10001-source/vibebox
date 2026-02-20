@@ -1,9 +1,11 @@
 // app/api/admin/logout/route.ts
-import { NextResponse } from "next/server";
-import { cookies } from "next/headers";
+import { NextResponse } from 'next/server';
 
 export async function POST() {
-  const cookieStore = await cookies();
-  cookieStore.delete("admin_token");
-  return NextResponse.json({ ok: true });
+  const response = NextResponse.json({ success: true });
+  
+  // 쿠키 삭제
+  response.cookies.delete('admin_token');
+  
+  return response;
 }
