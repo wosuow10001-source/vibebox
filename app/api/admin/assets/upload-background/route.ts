@@ -27,21 +27,20 @@ export async function POST(req: NextRequest) {
     let file: Buffer | null = null;
     let contentId = '';
 
-    // FormData 지원 (clien
-ide에서 렣던 데이터)
+    // Support FormData from client
     if (contentType.includes('multipart/form-data')) {
-      console.log('FormData 요청 춘리 중...');
+      console.log('Processing FormData request...');
       const formData = await req.formData();
       const fileData = formData.get('file');
-      
+
       if (fileData instanceof File) {
         file = Buffer.from(await fileData.arrayBuffer());
         contentId = `thumbnail-${Date.now()}`;
-        console.log('파일 및 contentId 추출:', { fileSize: file.length, contentId });
+        console.log('File processed successfully:', { fileSize: file.length, contentId });
       } else {
-        console.error('FormData에서 파일을 찾을 수 없습니다');
+        console.error('File not found in FormData');
         return NextResponse.json(
-          { error: 'FormData에 파일이 없습니다' },
+          { error: 'File not found in FormData' },
           {
             status: 400,
             headers: { 'Access-Control-Allow-Origin': '*' },
@@ -49,59 +48,17 @@ ide에서 렣던 데이터)
         );
       }
     }
-    // JSON 지원 (base64 데이터)
+    // Support JSON with base64
     else if (contentType.includes('application/json')) {
-      console.log('JSON 지원 데이터 처리 중...');
-      let body;
-      try {
-        body = await req.json();
-      } catch (parseError) {
-        console.error('JSON 파싱 에러:', parseError);
+      console.log('Processing JSON request...');
+      const body = await req.json();
+      const base64String = body.file;
+      const contentIdParam = body.contentId;
+
+      if (!base64String) {
+        console.error('Base64 file data not provided');
         return NextResponse.json(
-          { error: 'JSON 형식이 올바르지 않습니다' },
-          {
-            status: 400,
-            headers: { 'Access-Control-Allow-Origin': '*' },
-          }
-        );
-      }
-
-      const { file: fileData, contentId: contentIdParam } = body;
-
-      if (!fileData || !contentIdParam) {
-        console.error('필수 필드 누락:', { hasFile: !!fileData, hasContentId: !!contentIdParam });
-        return NextResponse.json(
-          { error: '파일 또는 contentId가 없습니다' },
-          {
-            status: 400,
-            headers: { 'Access-Control-Allow-Origin': '*' },
-          }
-        );
-      }
-
-      if (typeof fileData !== 'string' || fileData.length === 0) {
-        console.error('파일 형식 오류:', { fileType: typeof fileData });
-        return NextResponse.json(
-          { error: '파일은 문자열 형식이어야 합니다' },
-          {
-            status: 400,
-            headers: { 'Access-Control-Allow-Origin': '*' },
-          }
-        );
-      }
-
-      let base64String = fileData;
-      if (fileData.includes(',')) {
-        const parts = fileData.split(',');
-        if (parts.length >= 2) {
-          base64String = parts[1];
-        }
-      }
-
-      if (!/^[A-Za-z0-9+/=]+$/.test(base64String)) {
-        console.error('Base64 형식 오류');
-        return NextResponse.json(
-          { error: '파일이 올바른 Base64 형식이 아닙니다' },
+          { error: 'File data not provided' },
           {
             status: 400,
             headers: { 'Access-Control-Allow-Origin': '*' },
@@ -111,12 +68,12 @@ ide에서 렣던 데이터)
 
       try {
         file = Buffer.from(base64String, 'base64');
-        contentId = contentIdParam;
-        console.log('Base64 디코드 성공:', { fileSize: file.length, contentId });
+        contentId = contentIdParam || `thumbnail-${Date.now()}`;
+        console.log('Base64 decoded successfully:', { fileSize: file.length, contentId });
       } catch (bufferError) {
-        console.error('Buffer 변환 에러:', bufferError);
+        console.error('Buffer conversion error:', bufferError);
         return NextResponse.json(
-          { error: 'Base64 디코등 실패' },
+          { error: 'Base64 decoding failed' },
           {
             status: 400,
             headers: { 'Access-Control-Allow-Origin': '*' },
@@ -124,9 +81,9 @@ ide에서 렣던 데이터)
         );
       }
     } else {
-      console.error('지원되지 않는 Content-Type:', contentType);
+      console.error('Unsupported Content-Type:', contentType);
       return NextResponse.json(
-        { error: 'JSON 또는 FormData 형식을 젪c용해주세요' },
+        { error: 'Use JSON or FormData format' },
         {
           status: 400,
           headers: { 'Access-Control-Allow-Origin': '*' },
@@ -134,11 +91,11 @@ ide에서 렣던 데이터)
       );
     }
 
-    // 파일 검증
+    // File validation
     if (!file || file.length === 0) {
-      console.error('파일이 비어 있습니다');
+      console.error('File is empty');
       return NextResponse.json(
-        { error: '파일띴 비어 있습니다' },
+        { error: 'File is empty' },
         {
           status: 400,
           headers: { 'Access-Control-Allow-Origin': '*' },
@@ -146,12 +103,12 @@ ide에서 렣던 데이터)
       );
     }
 
-    // 파일 크기 제한 (10MB)
+    // File size limit (10MB)
     const maxFileSize = 10 * 1024 * 1024;
     if (file.length > maxFileSize) {
-      console.error('파일 크기 초과:', file.length);
+      console.error('File size exceeded:', file.length);
       return NextResponse.json(
-        { error: '파일 크기는 10MB 이하여야 합니다' },
+        { error: 'File size must be under 10MB' },
         {
           status: 413,
           headers: { 'Access-Control-Allow-Origin': '*' },
@@ -159,8 +116,11 @@ ide에서 렣던 데이터)
       );
     }
 
-    // Cloudinary 업로드
-    console.log('Cloudinary 업로드 시작:', { contentId, fileSize: file.length });
+    // Upload to Cloudinary
+    console.log('Starting Cloudinary upload:', {
+      contentId,
+      fileSize: file.length,
+    });
     const result = await new Promise((resolve, reject) => {
       const stream = cloudinary.uploader.upload_stream(
         {
@@ -170,15 +130,14 @@ ide에서 렣던 데이터)
         },
         (error, result) => {
           if (error) {
-            console.error('Cloudinary 업로드 실패:', error);
+            console.error('Cloudinary upload failed:', error);
             reject(error);
           } else {
-            console.log('Cloudinary 업로드 성공:', result);
+            console.log('Cloudinary upload successful:', result);
             resolve(result);
           }
         }
       );
-
       stream.end(file);
     });
 
@@ -194,7 +153,7 @@ ide에서 렣던 데이터)
       }
     );
   } catch (error: any) {
-    console.error('배경 업로드 API 에러:', {
+    console.error('Background upload API error:', {
       message: error?.message,
       name: error?.name,
       stack: error?.stack,
@@ -202,7 +161,7 @@ ide에서 렣던 데이터)
 
     return NextResponse.json(
       {
-        error: `배경 업로드 실패: ${error?.message || '알 수 없음'}`,
+        error: 'Background upload failed: ${error?.message || "Unknown error"}',
       },
       {
         status: 500,
