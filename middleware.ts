@@ -10,6 +10,10 @@ export async function middleware(req: NextRequest) {
 
   // 로그인 관련 페이지/API는 보호 안 함
   if (pathname === "/admin/login" || pathname === "/api/admin/login" || pathname === "/api/admin/logout") {
+    // /admin/login은 /login으로 리다이렉트
+    if (pathname === "/admin/login") {
+      return NextResponse.redirect(new URL("/login", req.url));
+    }
     console.log(`✅ Skip protection for: ${pathname}`);
     return NextResponse.next();
   }
@@ -39,7 +43,7 @@ export async function middleware(req: NextRequest) {
         { status: 401 }
       );
     }
-    return NextResponse.redirect(new URL("/admin/login", req.url));
+    return NextResponse.redirect(new URL("/login", req.url));
   }
 
   // 간단한 토큰 검증 (base64 디코딩)
@@ -58,6 +62,6 @@ export async function middleware(req: NextRequest) {
         { status: 401 }
       );
     }
-    return NextResponse.redirect(new URL("/admin/login", req.url));
+    return NextResponse.redirect(new URL("/login", req.url));
   }
 }

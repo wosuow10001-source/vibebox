@@ -25,11 +25,24 @@ export function AdminPageLayout({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (isLoginPage) return;
 
-    // 사이트 설정 로드
+    // 사이트 설정 로드 (에러 무시)
     fetch('/api/admin/site-settings')
-      .then(res => res.json())
+      .then(res => {
+        if (res.ok) return res.json();
+        throw new Error('Failed to fetch');
+      })
       .then(data => setSettings(data))
-      .catch(err => console.error('Failed to load settings:', err));
+      .catch(err => {
+        console.warn('Failed to load settings (using defaults):', err);
+        // 기본값 사용
+        setSettings({
+          siteTitle: 'Vibebox',
+          colorPrimary: '#3B82F6',
+          colorSecondary: '#10B981',
+          colorBg: '#F3F4F6',
+          colorText: '#1F2937',
+        });
+      });
   }, [isLoginPage]);
 
   const s = settings || {};
@@ -101,7 +114,7 @@ export function AdminPageLayout({ children }: { children: React.ReactNode }) {
                 🌐 사이트 보기
               </Link>
               <Link
-                href="/admin/login"
+                href="/login"
                 className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
               >
                 🚪 로그아웃
